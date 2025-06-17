@@ -5,19 +5,21 @@ title: GlycoShape structures of G55818EE (FA2G2S2)
 
 ## Overview
 
+Glycan chemical structures can be complex and difficult to interpret, especially when visualized using traditional line drawings. To address this, the Symbol Nomenclature for Glycans (SNFG) system uses standardized colored shapes to represent different monosaccharides, making glycan structures easier to read and compare. Below, the chemical structure of G55818EE is shown alongside its SNFG representation.
+
 <div style="display: flex; justify-content: space-between; align-items: center;">
     <div style="flex: 1; text-align: center;">
         <img src="Glycan/Chemical.png" alt="G55818EE structure" width="80%">
+        <p><em>Chemical structure</em></p>
     </div>
     <div style="flex: 1; text-align: center;">
         <img src="https://glycoshape.org/api/svg/G55818EE" alt="G55818EE structure" width="80%">
+        <p><em>SNFG representation</em></p>
     </div>
 </div>
 
 
-[GlycoShape entry of G55818EE](https://glycoshape.org/glycan?glytoucan=G55818EE)
-
-## GlyTouCan Format and Anomeric Configurations
+## GlyTouCan and Anomeric Configurations
 
 The GlyTouCan identifier G55818EE represents the archetype structure. The anomeric configuration at the reducing end can vary, resulting in different GlyTouCan accessions:
 
@@ -48,13 +50,20 @@ FA2G2S2
 ```
 
 
-# Chemical information
+# Chemical and Biological information
 
-
-# Biological information
+[GlycoShape entry of G55818EE](https://glycoshape.org/glycan?glytoucan=G55818EE)
 
 
 # Structure
+
+
+## Simulation @ 300K
+<div style="text-align: center;">
+    <img src="Glycan/simulation.gif" alt="Simulation of G55818EE" width="40%" >
+    <p><em>Simulation of G55818EE glycan dynamics</em></p>
+</div>
+
 
 <div style="display: flex; justify-content: space-between;">
     <div style="flex: 1; padding: 1rem;">

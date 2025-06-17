@@ -1,5 +1,5 @@
 ---
-title: Glycoprotein modeling of Erythropoietin (EPO)
+title: Glycoprotein modeling of Erythropoietin (EPO) with Re-Glyco
 ---
 
 
@@ -22,7 +22,9 @@ Erythropoietin, also known as erythropoetin, haematopoietin, or haemopoietin, is
 
 For detailed protein information, visit the [UniProt entry](https://www.uniprot.org/uniprotkb/P01588/entry).
 
-or download the PDB file: [rEPO_ChainA.pdb](https://raw.githubusercontent.com/Ojas-Singh/GlycoShape-Resources/refs/heads/main/tutorials/EPO/rEPO_ChainA.pdb)
+Before proceeding, download the PDB file:  
+<a href="https://raw.githubusercontent.com/Ojas-Singh/GlycoShape-Resources/refs/heads/main/tutorials/EPO/rEPO_ChainA.pdb" download="rEPO_ChainA.pdb">rEPO_ChainA.pdb</a>
 
-## 
+# Upload the PDB file to Re-Glyco
+
 
