@@ -34,7 +34,7 @@ Before proceeding, download the PDB file:
     </div>
     <div style="flex: 1; text-align: center;">
         <img src="EPO\glycoshape.org-GlycoShapeGlycanStructureDatabase(1).png" alt="G55818EE structure" width="80%">
-        <p><em>EPO loaded</em></p>
+        
     </div>
 </div>
 
@@ -42,7 +42,7 @@ Before proceeding, download the PDB file:
 
 <div style="text-align: center;">
     <img src="EPO\glycoshape.org-GlycoShapeGlycanStructureDatabase(2).png" alt="Simulation of G55818EE" width="40%" >
-    <p><em>Simulation of G55818EE glycan dynamics</em></p>
+    
 </div>
 
 
@@ -50,7 +50,7 @@ Before proceeding, download the PDB file:
 
 <div style="text-align: center;">
     <img src="EPO\glycoshape.org-GlycoShapeGlycanStructureDatabase(3).png" alt="Simulation of G55818EE" width="40%" >
-    <p><em>Simulation of G55818EE glycan dynamics</em></p>
+    
 </div>
 
 # Switch to Re-Glyco Ensemble
@@ -58,10 +58,10 @@ Before proceeding, download the PDB file:
 <div style="display: flex; justify-content: space-between; align-items: center;">
     <div style="flex: 1; text-align: center;">
         <img src="EPO\glycoshape.org-GlycoShapeGlycanStructureDatabase(4).png" alt="G55818EE structure" width="80%">
-        <p><em>Re-Glyco</em></p>
+        
     </div>
     <div style="flex: 1; text-align: center;">
         <img src="EPO\glycoshape.org-GlycoShapeGlycanStructureDatabase(5).png" alt="G55818EE structure" width="80%">
-        <p><em>EPO loaded</em></p>
+        
     </div>
 </div>
