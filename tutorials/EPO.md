@@ -30,7 +30,7 @@ Before proceeding, download the PDB file:
 <div style="display: flex; justify-content: space-between; align-items: center;">
     <div style="flex: 1; text-align: center;">
         <img src="EPO\glycoshape.org-GlycoShapeGlycanStructureDatabase.png" alt="G55818EE structure" width="80%">
-        <p><em>Re-Glyco</em></p>
+        
     </div>
     <div style="flex: 1; text-align: center;">
         <img src="EPO\glycoshape.org-GlycoShapeGlycanStructureDatabase(1).png" alt="G55818EE structure" width="80%">
