@@ -27,7 +27,7 @@ The GlyTouCan identifier G55818EE represents the archetype structure. The anomer
 - **G29276DW** (α-anomer) - alpha anomeric configuration at reducing end
 - **G17689DH** (β-anomer) - beta anomeric configuration at reducing end
 
-This nomenclature system allows for precise identification of glycan structures while accounting for anomeric differences that can significantly impact biological function and structural properties.
+This nomenclature system allows for precise identification of glycan structures while accounting for anomeric differences and ambiguity.
 
 ## Nomenclature Systems
 
