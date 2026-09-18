@@ -201,7 +201,13 @@ def run_reglyco(
     command = [str(binary), *arguments]
     if seed is not None and "--seed" not in command:
         command.extend(["--seed", str(int(seed))])
-    if threads is not None and "--threads" not in command:
+    # `scan` deliberately has no worker-thread option in the native CLI.  It
+    # is a small deterministic topology/accessibility pass, while `build` and
+    # `ensemble` expose the threaded prepared-scoring paths.  Do not append a
+    # shared adapter option to a subcommand that does not accept it: clap
+    # rejects the whole command with exit code 2 before producing scan.json.
+    subcommand = next((arg for arg in command[1:] if not arg.startswith("-")), "")
+    if threads is not None and subcommand in {"build", "ensemble"} and "--threads" not in command:
         command.extend(["--threads", str(max(1, int(threads)))])
     command.extend(_common_provider_args(cache))
     completed = subprocess.run(

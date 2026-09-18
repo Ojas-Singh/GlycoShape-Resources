@@ -72,6 +72,34 @@ class LocalAdapterTests(unittest.TestCase):
             self.assertEqual(command.count("--threads"), 1)
             self.assertEqual(command[command.index("--threads") + 1], "5")
 
+    def test_scan_does_not_receive_unsupported_threads_option(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            binary = root / "reglyco"
+            binary.write_bytes(b"test executable")
+            output = root / "output"
+            captured = {}
+
+            def fake_run(command, **kwargs):
+                captured["command"] = list(command)
+                return adapter.subprocess.CompletedProcess(command, 0, "", "")
+
+            with patch.object(adapter, "ensure_reglyco_binary", return_value=binary), patch.object(
+                adapter.subprocess, "run", side_effect=fake_run
+            ):
+                adapter.run_reglyco(
+                    ["scan", "--protein", "input.pdb", "--output", str(output)],
+                    output,
+                    cache_dir=root / "cache",
+                    seed=0,
+                    threads=8,
+                )
+
+            command = captured["command"]
+            self.assertEqual(command[1], "scan")
+            self.assertNotIn("--threads", command)
+            self.assertEqual(command[command.index("--level") + 1], "1")
+
     def test_report_and_output_classification(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
