@@ -10,7 +10,7 @@ an interactive notebook option.
 back to a checkout selected with `REGLYCO_SOURCE_ROOT` or to:
 
 ```bash
-cargo install reglyco --locked --version 0.1.0
+cargo install reglyco --locked --version 0.2.0
 ```
 
 For local testing, set `REGLYCO_BIN` to an executable path. The optional
@@ -25,3 +25,9 @@ local-ensemble notebook treats its requested count as accepted glycosylated
 structures, attaches `G00028MO` at the selected target residue, retains
 rejection records, and writes a separate glycosylated multiframe PDB so the
 glycan atoms remain visible in Mol*.
+
+`build` and `ensemble` run with `--search-budget auto`, so ReGlyco derives the
+attachment-search population and generation count from the loaded
+site/conformer conflict graph (`reglyco_local.search_budget_args`). The `scan`
+step keeps the native fast 32x25 Cookbook budget. Binder-design/RFD3 sampling
+settings are independent of the ReGlyco attachment-search budget.

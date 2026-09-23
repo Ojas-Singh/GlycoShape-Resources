@@ -1,6 +1,7 @@
 """Small offline tests for the notebooks' native ReGlyco adapter."""
 
 import json
+import re
 import tempfile
 import unittest
 from pathlib import Path
@@ -8,8 +9,65 @@ from unittest.mock import patch
 
 import reglyco_local as adapter
 
+HELPER_DIR = Path(__file__).resolve().parent
+
+
+def _notebook_code(name: str) -> str:
+    """Return every code cell of a notebook as one Python source string."""
+
+    document = json.loads((HELPER_DIR / name).read_text())
+    return "\n".join(
+        "".join(cell.get("source", []))
+        for cell in document["cells"]
+        if cell.get("cell_type") == "code"
+    )
+
 
 class LocalAdapterTests(unittest.TestCase):
+
+    def test_release_manifest_pins_the_supported_binary(self) -> None:
+        manifest = json.loads((HELPER_DIR / "reglyco_release.json").read_text())
+        self.assertEqual(manifest["version"], "0.2.0")
+        self.assertEqual(manifest["platform"], "linux-x86_64")
+        self.assertEqual(manifest["asset"], "reglyco-0.2.0-linux-x86_64")
+        self.assertIn("/v0.2.0/reglyco-0.2.0-linux-x86_64", manifest["url"])
+        self.assertEqual(
+            manifest["sha256"],
+            "19b6d763deceae9f32b5dd1cc9c509d97075a250441122bff948e0af10df783b",
+        )
+        self.assertRegex(manifest["source_revision"], r"^[0-9a-f]{40}$")
+        self.assertEqual(adapter.REGLYCO_VERSION, "0.2.0")
+
+    def test_search_budget_args_default_to_auto(self) -> None:
+        self.assertEqual(adapter.search_budget_args(), ["--search-budget", "auto"])
+        self.assertEqual(adapter.search_budget_args("AUTO"), ["--search-budget", "auto"])
+        self.assertEqual(adapter.search_budget_args("manual"), ["--search-budget", "manual"])
+        with self.assertRaises(ValueError):
+            adapter.search_budget_args("fast")
+
+    def test_notebooks_use_the_auto_attachment_budget(self) -> None:
+        for name in (
+            "ReGlyco_Binder_Design_filter.ipynb",
+            "Local_Conformational_Ensemble.ipynb",
+        ):
+            source = _notebook_code(name)
+            self.assertIn("search_budget_args", source, name)
+            self.assertTrue(re.search(r"search_budget_args\(", source), name)
+            # The attachment search must never pin a manual budget again.
+            self.assertNotIn("\"--population\"", source, name)
+            self.assertNotIn("'--population'", source, name)
+            self.assertNotIn("\"--generations\"", source, name)
+            self.assertNotIn("'--generations'", source, name)
+            self.assertNotIn("\"--search-budget\"", source, name)
+            self.assertNotIn("'--search-budget'", source, name)
+
+    def test_binder_notebook_keeps_the_glycoprotein_render_contract(self) -> None:
+        source = _notebook_code("ReGlyco_Binder_Design_filter.ipynb")
+        # --no-system suppresses the force-field bundle, not the PDB.
+        self.assertIn("--no-system", source)
+        self.assertIn("glycoprotein.pdb", source)
+        self.assertIn("addGlycanHighlights", source)
+
     def test_provider_level_and_seed_are_added_once(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)

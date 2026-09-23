@@ -33,7 +33,7 @@ def _release_metadata() -> dict[str, Any]:
 
 
 _RELEASE = _release_metadata()
-REGLYCO_VERSION = os.environ.get("REGLYCO_VERSION", str(_RELEASE.get("version", "0.1.0")))
+REGLYCO_VERSION = os.environ.get("REGLYCO_VERSION", str(_RELEASE.get("version", "0.2.0")))
 REGLYCO_API_BASE = os.environ.get("REGLYCO_API_BASE", "https://glycoshape.io")
 _FIXED_PROVIDER_LEVEL = "1"
 
@@ -183,6 +183,21 @@ def _common_provider_args(cache_dir: Path) -> list[str]:
     ]
 
 
+def search_budget_args(mode: str = "auto") -> list[str]:
+    """Return the flags selecting a ReGlyco attachment-search budget.
+
+    `build` and `ensemble` accept `--search-budget auto|manual`.  Auto derives
+    the population and generation count from the loaded site/conformer conflict
+    graph, so the notebooks must not hard-code `--population`/`--generations`
+    for them.  (`scan` keeps its own fast 32x25 Cookbook defaults.)
+    """
+
+    normalized = str(mode).strip().lower()
+    if normalized not in {"auto", "manual"}:
+        raise ValueError(f"Unsupported ReGlyco search budget mode: {mode!r}")
+    return ["--search-budget", normalized]
+
+
 def run_reglyco(
     arguments: Sequence[str],
     output_dir: str | Path,
@@ -295,4 +310,5 @@ __all__ = [
     "read_json",
     "read_report",
     "run_reglyco",
+    "search_budget_args",
 ]

@@ -1,9 +1,9 @@
 {
-  "version": "0.1.0",
+  "version": "0.2.0",
   "platform": "linux-x86_64",
-  "asset": "reglyco-0.1.0-linux-x86_64",
-  "url": "https://github.com/Ojas-Singh/ReGlyco/releases/download/v0.1.0/reglyco-0.1.0-linux-x86_64",
-  "sha256": "59ca2acef8925fd1317c6db617f9a19c05f5ba78dbfac69bbb0b337491fb8e83",
-  "source_revision": "561b1ebe873e19ef072c54993fe6d4bd20249dd5",
+  "asset": "reglyco-0.2.0-linux-x86_64",
+  "url": "https://github.com/Ojas-Singh/ReGlyco/releases/download/v0.2.0/reglyco-0.2.0-linux-x86_64",
+  "sha256": "19b6d763deceae9f32b5dd1cc9c509d97075a250441122bff948e0af10df783b",
+  "source_revision": "5f581d77223287455549096b2111c85ed3f993b7",
   "source_dirty_at_build": false
 }
