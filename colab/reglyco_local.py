@@ -33,7 +33,7 @@ def _release_metadata() -> dict[str, Any]:
 
 
 _RELEASE = _release_metadata()
-REGLYCO_VERSION = os.environ.get("REGLYCO_VERSION", str(_RELEASE.get("version", "0.2.0")))
+REGLYCO_VERSION = os.environ.get("REGLYCO_VERSION", str(_RELEASE.get("version", "0.2.3")))
 REGLYCO_API_BASE = os.environ.get("REGLYCO_API_BASE", "https://glycoshape.io")
 _FIXED_PROVIDER_LEVEL = "1"
 
