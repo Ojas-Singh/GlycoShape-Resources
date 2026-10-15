@@ -10,7 +10,7 @@ an interactive notebook option.
 back to a checkout selected with `REGLYCO_SOURCE_ROOT` or to:
 
 ```bash
-cargo install reglyco --locked --version 0.2.0
+cargo install reglyco --locked --version 0.2.3
 ```
 
 For local testing, set `REGLYCO_BIN` to an executable path. The optional

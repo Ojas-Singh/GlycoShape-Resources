@@ -27,16 +27,16 @@ class LocalAdapterTests(unittest.TestCase):
 
     def test_release_manifest_pins_the_supported_binary(self) -> None:
         manifest = json.loads((HELPER_DIR / "reglyco_release.json").read_text())
-        self.assertEqual(manifest["version"], "0.2.0")
+        self.assertEqual(manifest["version"], "0.2.3")
         self.assertEqual(manifest["platform"], "linux-x86_64")
-        self.assertEqual(manifest["asset"], "reglyco-0.2.0-linux-x86_64")
-        self.assertIn("/v0.2.0/reglyco-0.2.0-linux-x86_64", manifest["url"])
+        self.assertEqual(manifest["asset"], "reglyco-0.2.3-linux-x86_64")
+        self.assertIn("/v0.2.3/reglyco-0.2.3-linux-x86_64", manifest["url"])
         self.assertEqual(
             manifest["sha256"],
-            "19b6d763deceae9f32b5dd1cc9c509d97075a250441122bff948e0af10df783b",
+            "278f119acac98a77531e87ad644aeadb5165b1c15c1be67e13dcb8e98192b460",
         )
         self.assertRegex(manifest["source_revision"], r"^[0-9a-f]{40}$")
-        self.assertEqual(adapter.REGLYCO_VERSION, "0.2.0")
+        self.assertEqual(adapter.REGLYCO_VERSION, "0.2.3")
 
     def test_search_budget_args_default_to_auto(self) -> None:
         self.assertEqual(adapter.search_budget_args(), ["--search-budget", "auto"])
